@@ -182,9 +182,10 @@ public class Penghitung {
     public Expression ConvertInfix(Expression E) throws PenghitungException {
         Stack <Token> s1 = new Stack<>();
         Expression s2 = new Expression();
-
+        
         for (int i = 0; i < E.GetLength(); ++i) {
             Token cur = E.GetToken(i);
+            //System.out.print(E.GetToken(i).toString());
             if (cur instanceof Bilangan) {
                 s2.AddToken(cur);
 
@@ -192,39 +193,47 @@ public class Penghitung {
                     Operator op2 = (Operator) s1.peek();
                     
                     while ((Operator)s1.peek() instanceof Operator &&
-                    (op2.GetJenisOperator() == Operator.EnumOperator.Not))
+                    (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not))
                     {
-                        s2.AddToken(op2);
-                        s1.pop();
+                        s2.AddToken(s1.pop());
                     }
                     
                 } catch (EmptyStackException e) {}      // do nothing
 
             } else {
                 Operator op = (Operator)cur;
-		        if (op.GetJenisOperator() == Operator.EnumOperator.kurungBuka) {
-
+		    if (op.GetJenisOperator() == Operator.EnumOperator.kurungBuka) {
                     s1.push(cur);
 
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.kurungTutup) {
                     
-                    while (((Operator)s1.peek()).GetJenisOperator() != Operator.EnumOperator.kurungBuka) {
-                        s2.AddToken(s1.pop());
+                    Boolean endKurung = false;
+                    
+                    //System.out.print(">>>>>>>>>[" + s1.size() + "]");
+
+                    while (!endKurung) {
+                        //System.out.print(s1.peek().toString());
+                        if (((Operator)s1.peek()).GetJenisOperator() != Operator.EnumOperator.kurungBuka)
+                            s2.AddToken(s1.pop());
+                        endKurung = ((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.kurungBuka;
                     }
                     
+                    //System.out.print("<<<<<<<<<");
+
                     s1.pop();
+                    
+                    //System.out.print("pop");
 
                     try {
                         Operator op2 = (Operator) s1.peek();
                         
                         while ((Operator)s1.peek() instanceof Operator &&
-                        (op2.GetJenisOperator() == Operator.EnumOperator.Not))
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not))
                         {
-                            s2.AddToken(op2);
-                            s1.pop();
+                            s2.AddToken(s1.pop());
                         }
 
-                    } catch (EmptyStackException e) {}      // do nothing
+                    } catch (Exception e) {}      // do nothing
 
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.Not) {
                     s1.push(cur);
@@ -233,13 +242,10 @@ public class Penghitung {
                         s1.push(cur);
                     } else {
                         try {
-                            Operator op2 = (Operator) s1.peek();
-                            
                             while ((Operator)s1.peek() instanceof Operator &&
-                            (op2.GetJenisOperator() == Operator.EnumOperator.kali || op2.GetJenisOperator() == Operator.EnumOperator.bagi))
+                            (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.kali || ((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.bagi))
                             {
-                                s2.AddToken(op2);
-                                s1.pop();
+                                s2.AddToken(s1.pop());
                             }
                         } catch (EmptyStackException e) {}      // do nothing
                         
@@ -247,11 +253,21 @@ public class Penghitung {
                     }
                 }
             }
+            //System.out.print("x[" + s1.size() + "]");
         }
 
+        //System.out.println("a");
+        
         while (!s1.empty()) {
             s2.AddToken(s1.pop());
         }
+                
+        //System.out.print("b");
+        //for (int i=0; i<s2.GetLength(); i++)
+        //{
+        //    System.out.print(s2.GetToken(i).toString());
+        //}
+        
         return s2;        
     }
 }
