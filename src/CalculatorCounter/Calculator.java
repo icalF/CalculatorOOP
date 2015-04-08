@@ -35,8 +35,8 @@ private static Calculator instance;
 private Penghitung.EnumMathLogic mode_mathLogic;
 private Expression.EnumSintaks mode_sintaks;
 private Bilangan.EnumBilangan mode_bilangan;
-private Penghitung PenghitungCalculator = new Penghitung();
-private Tokenizer TokenizerCalculator = new Tokenizer();
+private Penghitung PenghitungCalculator;
+private Tokenizer TokenizerCalculator;
 private final Scanner scanner = new Scanner(System.in);
 
 
@@ -54,7 +54,6 @@ private final Scanner scanner = new Scanner(System.in);
         mode_bilangan = EnumBilangan.arab;
         mode_sintaks = EnumSintaks.infix;
         mode_mathLogic = EnumMathLogic.math;
-        instance = this;
     }
 
     public static Calculator getInstance(){

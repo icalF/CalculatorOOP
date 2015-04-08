@@ -24,6 +24,6 @@ public class CommandRedo  extends Command {
      */
     @Override
     public void execute(){
-        System.out.println("Proses redo");
+        System.out.println("Proses redo " + n);
     }
 }
