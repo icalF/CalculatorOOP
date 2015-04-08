@@ -55,7 +55,6 @@ public class Tokenizer {
         boolean bilMinus = false;
         Expression tempExpression = new Expression();
         Token CurToken = null;
-        System.out.println(s.length());
         int PanjangS = s.length();
         int i = 0;
 

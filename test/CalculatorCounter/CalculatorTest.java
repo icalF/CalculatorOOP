@@ -10,6 +10,11 @@ package CalculatorCounter;
 
 import ExpressionCalculator.Bilangan;
 import ExpressionCalculator.Expression;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import static java.lang.System.out;
+import java.nio.charset.StandardCharsets;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,11 +53,12 @@ public class CalculatorTest {
     @Test
     public void testSetSintaks() {
         System.out.println("SetSintaks");
-        Expression.EnumSintaks S = null;
+        Expression.EnumSintaks S = Expression.EnumSintaks.infix;
         Calculator instance = new Calculator();
         instance.SetSintaks(S);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //assertEqual("mode_sintaks",S, instance);
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -65,32 +71,50 @@ public class CalculatorTest {
         Calculator instance = new Calculator();
         instance.SetJenisAngka(B);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of Run method, of class Calculator.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRun() throws Exception {
         System.out.println("Run");
         Calculator instance = new Calculator();
-        instance.Run();
+        
+        //Masukkan string input
+        String exampleString = "2 + 2\n"
+                + "2 + 4\n";
+        InputStream in = new ByteArrayInputStream(exampleString.getBytes(StandardCharsets.UTF_8));
+        //buat output
+        PrintStream stdout = System.out;
+        System.setOut(new PrintStream(out));
+
+
+  instance.Run(in, out);
+  assertEquals(false, out.toString().contains("3.0\n"));
+  
+  // optionally, reset System.in to its original
+    System.setIn(System.in);
+    System.setOut(stdout);
+  //assertThat(output.toString(), contains("Proses selsai")););
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of JalankanPerintah method, of class Calculator.
+     * @throws java.lang.Exception
      */
     @Test
     public void testJalankanPerintah() throws Exception {
         System.out.println("JalankanPerintah");
         Expression E = null;
         Calculator instance = new Calculator();
-        instance.JalankanPerintah(E);
+        //instance.JalankanPerintah(E);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

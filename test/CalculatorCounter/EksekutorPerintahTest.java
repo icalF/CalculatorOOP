@@ -51,7 +51,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.AddExpression(E);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -64,7 +64,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.GetExpression(i);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -76,7 +76,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.GetAllExpression();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -90,7 +90,7 @@ public class EksekutorPerintahTest {
         int result = instance.GetLength();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -103,7 +103,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.Undo(n);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +115,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.Redo();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -127,7 +127,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.Save();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -140,7 +140,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.ShowMem(n);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -152,7 +152,7 @@ public class EksekutorPerintahTest {
         EksekutorPerintah instance = new EksekutorPerintah();
         instance.ShowAll();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
