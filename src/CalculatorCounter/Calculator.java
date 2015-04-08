@@ -31,10 +31,10 @@ import java.util.Scanner;
  */
 public class Calculator {
 
+private static Calculator instance;
 private Penghitung.EnumMathLogic mode_mathLogic;
 private Expression.EnumSintaks mode_sintaks;
 private Bilangan.EnumBilangan mode_bilangan;
-private EksekutorPerintah EksekutorCalculator = new EksekutorPerintah();
 private Penghitung PenghitungCalculator = new Penghitung();
 private Tokenizer TokenizerCalculator = new Tokenizer();
 private final Scanner scanner = new Scanner(System.in);
@@ -49,15 +49,22 @@ private final Scanner scanner = new Scanner(System.in);
      */
 
     public Calculator(){
-        EksekutorCalculator = new EksekutorPerintah();
         PenghitungCalculator = new Penghitung();
         TokenizerCalculator = new Tokenizer();
         mode_bilangan = EnumBilangan.arab;
         mode_sintaks = EnumSintaks.infix;
         mode_mathLogic = EnumMathLogic.math;
+        instance = this;
     }
 
-//tidak diperlukan cctor dan opr= karena tidak pernah ada passing calculator
+    public static Calculator getInstance(){
+        if (instance==null)
+            instance = new Calculator();
+        
+        return instance;
+    }
+    
+    //tidak diperlukan cctor dan opr= karena tidak pernah ada passing calculator
     //Setter
 
     /**
@@ -70,7 +77,6 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetSintaks(Expression.EnumSintaks S){
         mode_sintaks = S;
 	PenghitungCalculator.SetSintaks(S);
-	EksekutorCalculator = new EksekutorPerintah();
     }
 
     /**
@@ -83,7 +89,6 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetJenisAngka(Bilangan.EnumBilangan B){
         mode_bilangan = B;
 	TokenizerCalculator.SetModeBilangan(B);
-        EksekutorCalculator = new EksekutorPerintah();
     }
     
     /**
@@ -96,7 +101,6 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetMathLogic(Penghitung.EnumMathLogic L){
         mode_mathLogic = L;
 	PenghitungCalculator.SetMathLogic(L);
-        EksekutorCalculator = new EksekutorPerintah();
     }
     //Eksekusi
 
@@ -156,8 +160,6 @@ private final Scanner scanner = new Scanner(System.in);
                                     }
                                 }
                                 
-                                //Lakukan penyimpanan ke memori
-                                EksekutorCalculator.AddExpression(e);
                             } catch (Exception E) {
                                     System.out.println(E.getMessage());
                             }
@@ -196,16 +198,7 @@ private final Scanner scanner = new Scanner(System.in);
                         Bilangan bilParam = (Bilangan) TokenParam;
                         int setParam = (int)bilParam.GetValue();
 
-                        switch (setParam) 
-                        {
-                            case 0 : SetMathLogic(Penghitung.EnumMathLogic.math);break;
-                            case 1 : SetMathLogic(Penghitung.EnumMathLogic.logic);break;
-                            case 2 : SetJenisAngka(Bilangan.EnumBilangan.arab);break;
-                            case 3 : SetJenisAngka(Bilangan.EnumBilangan.romawi); break;
-                            case 4 : SetSintaks(Expression.EnumSintaks.prefix);break;
-                            case 5 : SetSintaks(Expression.EnumSintaks.infix);break;
-                            case 6 : SetSintaks(Expression.EnumSintaks.postfix);break;
-                        }
+                        EksekutorPerintah.getInstance().runCommand(new CommandSet(setParam));
                     }
                     else
                         throw new CalculatorException("[syntax error]");
@@ -226,7 +219,7 @@ private final Scanner scanner = new Scanner(System.in);
                     else if (E.GetLength() > 2)
                             throw new CalculatorException("[syntax error]");
 
-                    EksekutorCalculator.Undo(undoParam);                
+                    EksekutorPerintah.getInstance().runCommand(new CommandUndo(undoParam));
                 }
                 break;
             case redo :
@@ -245,9 +238,8 @@ private final Scanner scanner = new Scanner(System.in);
                     else if (E.GetLength() > 2)
                         throw new CalculatorException("[syntax error]");
 
-                    for (int i = 0; i < redoParam; ++i) {
-                        EksekutorCalculator.Redo();
-                    }
+                    
+                    EksekutorPerintah.getInstance().runCommand(new CommandRedo(redoParam));
                 }
                 break;
             case showmem :
@@ -260,7 +252,7 @@ private final Scanner scanner = new Scanner(System.in);
                         Bilangan bilParam = (Bilangan) TokenParam;
                         int showMemParam = (int)bilParam.GetValue();
 
-                        EksekutorCalculator.ShowMem(showMemParam);
+                        EksekutorPerintah.getInstance().runCommand(new CommandShowMem(showMemParam));
                     }
                     else
                         throw new CalculatorException("[syntax error]");
@@ -268,12 +260,12 @@ private final Scanner scanner = new Scanner(System.in);
                 break;
             case showall :
                 {
-                    EksekutorCalculator.ShowAll();
+                    EksekutorPerintah.getInstance().runCommand(new CommandShowAll());
                 }
                 break;
             case save :
                 {
-                    EksekutorCalculator.Save();
+                    EksekutorPerintah.getInstance().runCommand(new CommandSave());
                 }
                 break;
 	}
@@ -321,8 +313,6 @@ private final Scanner scanner = new Scanner(System.in);
                                     }
                                 }
                                 
-                                //Lakukan penyimpanan ke memori
-                                EksekutorCalculator.AddExpression(e);
                             } catch (EmptyStackException E) {
                                     throw new PenghitungException("Stack kosong");
                             } catch (PenghitungException E) {

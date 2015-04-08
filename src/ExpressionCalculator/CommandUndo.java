@@ -9,14 +9,23 @@ package ExpressionCalculator;
  *
  * @author Ibrohim
  */
-public class CommandUndo {
+public class CommandUndo extends Command {
+    
     private int n;
     
     public CommandUndo(int _n){
         n = _n;
     }
     
+    /**
+     * Prosedur Execute 
+     *
+     * Fungsi yang melakukan perintah Undo.
+     *
+     */
+    
+    @Override
     public void execute(){
-        System.out.println("Undo");
+        System.out.println("Proses undo memori sebanyak " + n);
     }
 }

@@ -5,18 +5,31 @@
  */
 package ExpressionCalculator;
 
+import CalculatorCounter.Calculator;
+
 /**
  *
  * @author Ibrohim
  */
-public class CommandSet {
+public class CommandSet  extends Command {
     private int tipe;
     
     public CommandSet(int _tipe){
         tipe = _tipe;
     }
     
+    @Override
     public void execute(){
-        System.out.println("Set");
+        
+        switch (tipe) 
+        {
+            case 0 : Calculator.getInstance().SetMathLogic(Penghitung.EnumMathLogic.math);break;
+            case 1 : Calculator.getInstance().SetMathLogic(Penghitung.EnumMathLogic.logic);break;
+            case 2 : Calculator.getInstance().SetJenisAngka(Bilangan.EnumBilangan.arab);break;
+            case 3 : Calculator.getInstance().SetJenisAngka(Bilangan.EnumBilangan.romawi); break;
+            case 4 : Calculator.getInstance().SetSintaks(Expression.EnumSintaks.prefix);break;
+            case 5 : Calculator.getInstance().SetSintaks(Expression.EnumSintaks.infix);break;
+            case 6 : Calculator.getInstance().SetSintaks(Expression.EnumSintaks.postfix);break;
+        }
     }
 }

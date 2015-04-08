@@ -163,15 +163,14 @@ public class Penghitung {
                         }
                         else
                         {
-                            boolean stackEmpty = false;
+                            boolean stackEmpty = s.empty();
 
                             while ((!stackEmpty) && (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unknown)){
                                 s.pop();
                                 postfix.AddToken(s.pop());
-                                s.pop();
                                 stackEmpty = s.empty();
                             }
-
+                            
                             s.push(new Operator());
                         }
                     }
@@ -179,6 +178,7 @@ public class Penghitung {
                 }
             }
         } catch (Exception E) {
+            System.out.println("a");
             System.out.println(E.getMessage());
         }
         return postfix;

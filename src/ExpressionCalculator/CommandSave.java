@@ -9,9 +9,9 @@ package ExpressionCalculator;
  *
  * @author Ibrohim
  */
-public class CommandShowAll extends Command{
+public class CommandSave extends Command{
     
-    public CommandShowAll(){
+    public CommandSave(){
         // nothing
     }
     
@@ -23,7 +23,7 @@ public class CommandShowAll extends Command{
      */
     @Override
     public void execute(){
-        System.out.println("Proses show all");
+        System.out.println("Proses save");
     }
 
 }

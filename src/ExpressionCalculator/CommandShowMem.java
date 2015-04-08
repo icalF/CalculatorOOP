@@ -9,14 +9,23 @@ package ExpressionCalculator;
  *
  * @author Ibrohim
  */
-public class CommandShowMem {
+public class CommandShowMem  extends Command {
+    
     private int n;
     
     public CommandShowMem(int _n){
         n = _n;
     }
     
+    /**
+     * Prosedur Execute
+     *
+     * Prosedur yang digunakan menampilkan n Ekspresi terakhir ke layar
+     *
+     */
+    @Override
     public void execute(){
-        System.out.println("ShowMem");
+        System.out.println("Proses show memori sebanyak " + n);
     }
+    
 }
