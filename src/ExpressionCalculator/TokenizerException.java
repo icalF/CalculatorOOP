@@ -7,7 +7,7 @@ package ExpressionCalculator;
 
 /**
  *
- * @author Satria
+ * @author Ibrohim Kholilul Islam
  */
 public class TokenizerException extends Exception {
 

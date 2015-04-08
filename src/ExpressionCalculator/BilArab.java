@@ -8,7 +8,7 @@ package ExpressionCalculator;
      * Class BilArab
      *
      * @author Satria Priambada
-     * @version 0.1
+     * @version 1.2
      *
      */
 

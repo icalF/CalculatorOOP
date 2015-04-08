@@ -8,6 +8,7 @@ package ExpressionCalculator;
 /**
  *
  * @author Satria
+ * @version 1.2
  */
 public class BilanganException extends Exception {
 

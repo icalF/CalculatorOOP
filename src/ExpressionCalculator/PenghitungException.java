@@ -7,7 +7,7 @@ package ExpressionCalculator;
 
 /**
  *
- * @author Satria
+ * @author Afrizal Fikri
  */
 public class PenghitungException extends Exception {
 

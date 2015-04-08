@@ -10,7 +10,8 @@ import java.util.Stack;
 
 /**
  *
- * @author Satria
+ * @author Afrizal Fikri
+ * @version 1.2
  */
 public class Penghitung {
 

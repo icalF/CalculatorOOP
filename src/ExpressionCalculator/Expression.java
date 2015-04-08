@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * pembungkusan vector of (pointer to token).
  *
  * @author    Ibrohim Kholilul Islam
- * @version   0.1
+ * @version   1.2
  * semua pointer token yang diberikan dapat ditunjuk oleh lebih dari 1 ekspresi.
  * destructor tidak bertangung jawab kepada token yang diberikan.
  * 

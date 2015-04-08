@@ -26,7 +26,7 @@ import java.util.Scanner;
  * Kelas utama kalkulator yang melakukan loop input-proses-output
  *
  * @author Satria Priambada
- * @version 0.1
+ * @version 1.2
  *
  */
 public class Calculator {

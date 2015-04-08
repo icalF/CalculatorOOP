@@ -10,8 +10,8 @@ package ExpressionCalculator;
  *
  * Kelas yang digunakan untuk melakukan proses parsing string
  *
- * @author Satria Priambada
- * @version 0.1
+ * @author Ibrohim Kholiul Islam
+ * @version 1.2
  *
  */
 public class Tokenizer {

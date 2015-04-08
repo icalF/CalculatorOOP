@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Kelas yang digunakan untuk merepresentasikan bilangan romawi
  *
  * @author Satria Priambada
- * @version 0.1
+ * @version 1.2
  *
  */
 public class BilRomawi extends Bilangan{

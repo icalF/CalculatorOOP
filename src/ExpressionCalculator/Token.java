@@ -11,7 +11,7 @@ package ExpressionCalculator;
  * Kelas abstrak yang digunakan untuk merepresentasikan token
  *
  * @author Satria Priambada
- * @version 0.1
+ * @version 1.2
  *
  */
 public abstract class Token {

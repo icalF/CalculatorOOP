@@ -11,7 +11,7 @@ package ExpressionCalculator;
  * Kelas Abstrak yang digunakan untuk merepresentasikan bilangan
  * 
  * @author    Satria Priambada
- * @version   0.1
+ * @version   1.2
  */
 
 public abstract class Bilangan extends Token{

@@ -11,7 +11,7 @@ package ExpressionCalculator;
  * Kelas yang digunakan untuk merepresentasikan token perintah
  * 
  * @author    Satria Priambada
- * @version   0.1
+ * @version   1.2
  * 
  */
 public class Perintah extends Token{
