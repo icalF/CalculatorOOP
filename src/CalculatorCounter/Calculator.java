@@ -34,7 +34,6 @@ public class Calculator {
 private Penghitung.EnumMathLogic mode_mathLogic;
 private Expression.EnumSintaks mode_sintaks;
 private Bilangan.EnumBilangan mode_bilangan;
-private EksekutorPerintah EksekutorCalculator = new EksekutorPerintah();
 private Penghitung PenghitungCalculator = new Penghitung();
 private Tokenizer TokenizerCalculator = new Tokenizer();
 private final Scanner scanner = new Scanner(System.in);
@@ -49,10 +48,8 @@ private final Scanner scanner = new Scanner(System.in);
      */
 
     public Calculator(){
-        EksekutorCalculator = new EksekutorPerintah();
         PenghitungCalculator = new Penghitung();
         TokenizerCalculator = new Tokenizer();
-        mode_bilangan = EnumBilangan.arab;
         mode_sintaks = EnumSintaks.infix;
         mode_mathLogic = EnumMathLogic.math;
     }
@@ -70,7 +67,7 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetSintaks(Expression.EnumSintaks S){
         mode_sintaks = S;
 	PenghitungCalculator.SetSintaks(S);
-	EksekutorCalculator = new EksekutorPerintah();
+	
     }
 
     /**
@@ -83,7 +80,7 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetJenisAngka(Bilangan.EnumBilangan B){
         mode_bilangan = B;
 	TokenizerCalculator.SetModeBilangan(B);
-        EksekutorCalculator = new EksekutorPerintah();
+        
     }
     
     /**
@@ -96,7 +93,7 @@ private final Scanner scanner = new Scanner(System.in);
     public void SetMathLogic(Penghitung.EnumMathLogic L){
         mode_mathLogic = L;
 	PenghitungCalculator.SetMathLogic(L);
-        EksekutorCalculator = new EksekutorPerintah();
+        
     }
     //Eksekusi
 
@@ -139,13 +136,10 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                int hasil = PenghitungCalculator.Calculate(e);
+                                double hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
-                                if (mode_bilangan == Bilangan.EnumBilangan.romawi)
-                                    hasilB = new BilRomawi(hasil);
-                                else //if (mode_bilangan == Bilangan.EnumBilangan.arab)
-                                    hasilB = new BilArab(hasil);
+                                hasilB = new BilArab(hasil);
                                 
                                 if (mode_mathLogic == Penghitung.EnumMathLogic.math){
                                     System.out.println(hasilB.toString());
@@ -158,7 +152,6 @@ private final Scanner scanner = new Scanner(System.in);
                                 }
                                 
                                 //Lakukan penyimpanan ke memori
-                                EksekutorCalculator.AddExpression(e);
                             } catch (Exception E) {
                                     System.out.println(E.getMessage());
                             }
@@ -212,72 +205,10 @@ private final Scanner scanner = new Scanner(System.in);
                         throw new CalculatorException("[syntax error]");
                 }
                 break;
-            case undo : 
-                {
-                    int undoParam = 1;
-
-                    if (E.GetLength()==2)
-                    {
-                            Token TokenParam = E.GetToken(1);
-                            if (TokenParam.GetType() != Token.EnumType.bil) throw new CalculatorException("[syntax error]");
-
-                            Bilangan bilParam = (Bilangan) TokenParam;
-                            undoParam = (int)bilParam.GetValue();
-                    }
-                    else if (E.GetLength() > 2)
-                            throw new CalculatorException("[syntax error]");
-
-                    EksekutorCalculator.Undo(undoParam);                
-                }
+            default :
+                System.out.println("Perintah tidak dikenali");
                 break;
-            case redo :
-                {
-                    int redoParam = 1;
-
-                    if (E.GetLength()==2)
-                    {
-                        Token TokenParam = E.GetToken(1);
-                        //Jika argumen bukan bilangan maka throw execption
-                        if (TokenParam.GetType() != Token.EnumType.bil) throw new CalculatorException("[syntax error]");
-
-                        Bilangan bilParam = (Bilangan) TokenParam;
-                        redoParam = (int)bilParam.GetValue();
-                    }
-                    else if (E.GetLength() > 2)
-                        throw new CalculatorException("[syntax error]");
-
-                    for (int i = 0; i < redoParam; ++i) {
-                        EksekutorCalculator.Redo();
-                    }
-                }
-                break;
-            case showmem :
-                {
-                    if (E.GetLength()==2)
-                    {
-                        Token TokenParam = E.GetToken(1);
-                        if (TokenParam.GetType() != Token.EnumType.bil) throw  new CalculatorException("[syntax error]");
-
-                        Bilangan bilParam = (Bilangan) TokenParam;
-                        int showMemParam = (int)bilParam.GetValue();
-
-                        EksekutorCalculator.ShowMem(showMemParam);
-                    }
-                    else
-                        throw new CalculatorException("[syntax error]");
-                }
-                break;
-            case showall :
-                {
-                    EksekutorCalculator.ShowAll();
-                }
-                break;
-            case save :
-                {
-                    EksekutorCalculator.Save();
-                }
-                break;
-	}
+        }
     }
     
     Object Run(InputStream in, PrintStream output) throws PenghitungException {
@@ -303,13 +234,10 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                int hasil = PenghitungCalculator.Calculate(e);
+                                double hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
-                                if (mode_bilangan == Bilangan.EnumBilangan.romawi)
-                                    hasilB = new BilRomawi(hasil);
-                                else //if (mode_bilangan == Bilangan.EnumBilangan.arab)
-                                    hasilB = new BilArab(hasil);
+                                hasilB = new BilArab(hasil);
                                     
                                 if (mode_mathLogic == Penghitung.EnumMathLogic.math){
                                     System.out.println(hasilB.toString());
@@ -323,7 +251,6 @@ private final Scanner scanner = new Scanner(System.in);
                                 }
                                 
                                 //Lakukan penyimpanan ke memori
-                                EksekutorCalculator.AddExpression(e);
                             } catch (EmptyStackException E) {
                                     throw new PenghitungException("Stack kosong");
                             } catch (PenghitungException E) {
