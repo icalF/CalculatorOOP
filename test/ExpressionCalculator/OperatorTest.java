@@ -47,11 +47,11 @@ public class OperatorTest {
     public void testGetJenisOperator() {
         System.out.println("GetJenisOperator");
         Operator instance = new Operator();
-        Operator.EnumOperator expResult = null;
+        Operator.EnumOperator expResult = Operator.EnumOperator.unknown;
         Operator.EnumOperator result = instance.GetJenisOperator();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -61,11 +61,11 @@ public class OperatorTest {
     public void testDisplay() {
         System.out.println("Display");
         Operator instance = new Operator();
-        String expResult = "";
+        String expResult = "?";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -75,11 +75,11 @@ public class OperatorTest {
     public void testGetType() {
         System.out.println("GetType");
         Operator instance = new Operator("*");
-        Token.EnumType expResult = null;
+        Token.EnumType expResult = Token.EnumType.opr;
         Token.EnumType result = instance.GetType();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

@@ -46,11 +46,11 @@ public class TokenizerTest {
     @Test
     public void testSetModeBilangan() {
         System.out.println("SetModeBilangan");
-        Bilangan.EnumBilangan B = null;
+        //Bilangan.EnumBilangan B = null;
         Tokenizer instance = new Tokenizer();
-        instance.SetModeBilangan(B);
+        //instance.SetModeBilangan(B);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -59,13 +59,19 @@ public class TokenizerTest {
     @Test
     public void testParse() throws Exception {
         System.out.println("Parse");
-        String s = "";
+        String s = "1 + 2";
+        BilArab B1 = new BilArab ("1");
+        Operator O = new Operator ("+");
+        BilArab B2 = new BilArab ("2");
         Tokenizer instance = new Tokenizer();
-        Expression expResult = null;
+        Expression expResult = new Expression();
+        expResult.AddToken(B1);
+        expResult.AddToken(O);
+        expResult.AddToken(B2);
         Expression result = instance.Tokenize(s);
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

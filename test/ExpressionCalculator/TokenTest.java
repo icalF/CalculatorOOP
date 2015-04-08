@@ -51,7 +51,7 @@ public class TokenTest {
         Token.EnumType result = instance.GetType();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -59,13 +59,13 @@ public class TokenTest {
      */
     @Test
     public void testToString() {
-        System.out.println("Display");
+        System.out.println("toString");
         Token instance = new TokenImpl();
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     public class TokenImpl extends Token {

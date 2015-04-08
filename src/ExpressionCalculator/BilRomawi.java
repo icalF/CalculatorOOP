@@ -133,7 +133,7 @@ public class BilRomawi extends Bilangan{
         // Add each of the correct elements, adjusting as we go.
         int pembagi = 100000;
         for (int i = 0; i < 6; i++) {
-            hasil = MatrixRomawi[i][val / pembagi];
+            hasil += MatrixRomawi[i][val / pembagi];
             val = val % pembagi;
             pembagi /= 10;
         }
