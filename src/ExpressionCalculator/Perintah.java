@@ -10,13 +10,8 @@ package ExpressionCalculator;
  *
  * Kelas yang digunakan untuk merepresentasikan token perintah
  * 
- * @class     Perintah Perintah.h "Perintah.h"
- * @package   ExpressionCalculator
- * @brief     Kelas yang digunakan untuk merepresentasikan token perintah
  * @author    Satria Priambada
  * @version   0.1
- * @date      April 2015
- * @warning   -
  * 
  */
 public class Perintah extends Token{
@@ -36,7 +31,6 @@ public class Perintah extends Token{
      *
      * Daftar perintah yang tersedia
      *
-     * @enum string
      */
     public static String KarakterPerintah[] = {"set", "undo", "redo", "showmem", "showall", "save", "?"};
 
@@ -58,7 +52,7 @@ public class Perintah extends Token{
      *
      * Konstruktor yang mengubah string masukan menjadi perintah yang sesuai
      *
-     * @param string
+     * @param _s masukkan string untuk konstruktor
      */
 
     public Perintah(String _s){
@@ -83,25 +77,23 @@ public class Perintah extends Token{
      *
      * Mendapatkan tipe perintah dari kelas Perintah yang sudah ada
      *
-     * @param none
-     * @return EnumPerintah
+     * @return EnumPerintah Kembalikan EnumPerintah dari Jenis Perintah tertentu
      */
     public EnumPerintah GetJenisPerintah(){
         return JenisPerintah;
     }
 
     /**
-     * Fungsi Display
+     * Fungsi toString
+
+ Fungsi bantunan untuk mencetak Perintah Berfungsi menmbuat string dari
+ Perintah
      *
-     * Fungsi bantunan untuk mencetak Perintah Berfungsi menmbuat string dari
-     * Perintah
-     *
-     * @param none
      * @return string
      */
     
     @Override
-    public String Display(){
+    public String toString(){
         return KarakterPerintah[JenisPerintah.ordinal()];
     }
 

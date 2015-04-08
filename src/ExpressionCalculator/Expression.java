@@ -12,15 +12,10 @@ import java.util.ArrayList;
  * Kelas yang digunakan untuk merepresentasikan ekspresi, merupakan 
  * pembungkusan vector of (pointer to token).
  *
- * @class     Expression Expression.h "Expression.h"
- * @package   ExpressionCalculator
- * @brief     Kelas yang digunakan untuk merepresentasikan ekspresi,
- *            merupakan pembungkusan vector of (pointer to token).
  * @author    Ibrohim Kholilul Islam
  * @version   0.1
- * @date      April 2015
- * @warning   semua pointer token yang diberikan dapat ditunjuk oleh lebih dari 1 ekspresi.
- * @warning   destructor tidak bertangung jawab kepada token yang diberikan.
+ * semua pointer token yang diberikan dapat ditunjuk oleh lebih dari 1 ekspresi.
+ * destructor tidak bertangung jawab kepada token yang diberikan.
  * 
  */
 public class Expression {
@@ -48,7 +43,7 @@ public class Expression {
      * Konstruktor yang digunakan untuk membuat Objek Expression dari Objek
      * Expression lain.
      *
-     * @param E1
+     * @param E1 expresi
      */
     public Expression(Expression E1){
         int PanjangExpresi = E1.GetLength();
@@ -63,6 +58,8 @@ public class Expression {
      *
      * Fungsi yang digunakan untuk menyalin objek ekspresi dari objek ekspresi
      *
+     * @param E1 expression
+     * @return this
      */
     public Expression Assign (Expression E1){
         VectorOfToken.clear();
@@ -94,7 +91,6 @@ public Token GetToken(int i){
 	 *
 	 * Fungsi yang mengembalikan panjang ekspresi
 	 *
-	 * @param none
 	 * @return integer
 	 */ 
 

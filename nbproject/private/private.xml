@@ -3,19 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Romawi.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/CalculatorCounter/Penghitung.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/ExpressionCalculator/BilanganExceptionTest.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Bilangan.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/BilRomawi.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/ExpressionCalculator/BilArabTest.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/CalculatorCounter/Calculator.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/CalculatorCounter/CalculatorException.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Parser.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/ExpressionCalculator/BilanganTest.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Perintah.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/CalculatorCounter/PenghitungException.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/ParserException.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/BilanganException.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/CalculatorCounter/CalculatorExceptionTest.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/CalculatorCounter/CalculatorTest.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/ExpressionCalculator/TokenizerTest.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Tokenizer.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Penghitung.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Operator.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Arab.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/test/ExpressionCalculator/OperatorTest.java</file>
+            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/BilArab.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Token.java</file>
-            <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/TryDriver/DriverCalculator.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/ExpressionCalculator/Expression.java</file>
             <file>file:/C:/Users/Satria/Documents/NetBeansProjects/CalculatorOOP/src/CalculatorCounter/EksekutorPerintah.java</file>
         </group>

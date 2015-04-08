@@ -10,14 +10,8 @@ package ExpressionCalculator;
  * 
  * Kelas Abstrak yang digunakan untuk merepresentasikan bilangan
  * 
- * @class     Bilangan Bilangan.h "Bilangan.h"
- * @package   ExpressionCalculator
- * @brief     Kelas Abstrak yang digunakan untuk merepresentasikan bilangan
  * @author    Satria Priambada
  * @version   0.1
- * @date      April 2015
- * @warning   -
- * 
  */
 
 public abstract class Bilangan extends Token{
@@ -35,16 +29,23 @@ public abstract class Bilangan extends Token{
      * @return std::string
      */
 
-    public abstract String Display();
+    /**
+     * Fungsi toString
+
+ Fungsi untuk mendapatkan string Bilangan Arab untuk ditulis
+     * @return std::string
+     */
+    @Override
+    public abstract String toString();
 
     /**
      * Fungsi GetType
      *
      * Fungsi untuk tipe polimorf token
      *
-     * @param none
      * @return EnumType
      */
+    @Override
     public EnumType GetType(){
         return EnumType.bil;
     }
@@ -54,7 +55,6 @@ public abstract class Bilangan extends Token{
      *
      * Fungsi untuk mendapatkan nilai dari Bilangan Arab
      *
-     * @param none
      * @return double
      */
     public abstract double GetValue(); //deffered

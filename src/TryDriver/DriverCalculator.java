@@ -13,7 +13,7 @@ package TryDriver;
  * @author Satria
  */
 
-import ExpressionCalculator.*;
+import ExpressionCalculator.PenghitungException;
 import CalculatorCounter.*;
 import java.io.IOException;
 public class DriverCalculator {
@@ -21,6 +21,7 @@ public class DriverCalculator {
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
+     * @throws ExpressionCalculator.PenghitungException
      */
     public static void main(String[] args) throws IOException, PenghitungException {
         Calculator C1;

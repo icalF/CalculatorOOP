@@ -10,13 +10,8 @@ package ExpressionCalculator;
  *
  * Kelas yang digunakan untuk merepresentasikan token operator
  * 
- * @class     Operator Operator.h "Operator.h"
- * @package   ExpressionCalculator
- * @brief     Kelas yang digunakan untuk merepresentasikan token operator
  * @author    Satria Priambada
  * @version   0.1
- * @date      April 2015
- * @warning   -
  * 
  */
 public class Operator extends Token{
@@ -46,7 +41,7 @@ public class Operator extends Token{
     /**
      * Static Data Member
      */
-    public static String KarakterOperator[] = {"+", "-", "/", "*", "Div", "Mod", "&&", "||", "!", "^", "(", ")", "==", ">=", "<=", ">","<","!=","?"};
+    public static String KarakterOperator[] = {"+", "-", "/", "*", "div", "mod", "and", "or", "not", "xor", "(", ")", "==", ">=", "<=", ">","<","!=","?"};
     
     private EnumOperator JenisOperator;
     
@@ -68,8 +63,7 @@ public class Operator extends Token{
      * Konstruktor yang digunakan untuk membuat Objek operator dari nilai string
      * yang diberikan
      *
-     * @param s string
-     * @pre s terdefinisi
+     * @param _s string masukan konstruktor 
      */
 
     public Operator(String _s){
@@ -92,22 +86,22 @@ public class Operator extends Token{
     /**
      * Fungsi GetJenisOperator
      *
-     * @param none return EnumOperator
+     * @return urutan dari EnumOperator
      */
     public EnumOperator GetJenisOperator(){
         return (EnumOperator)JenisOperator;
     }
 
     /**
-     * Fungsi Display
-     *
-     * Fungsi untuk mendapatkan string untuk ditampilkan
+     * Fungsi toString
+
+ Fungsi untuk mendapatkan string untuk ditampilkan
      *
      * @return string
      */
     
     @Override
-    public String Display(){
+    public String toString(){
         return KarakterOperator[JenisOperator.ordinal()];
     }
 
@@ -116,8 +110,7 @@ public class Operator extends Token{
      *
      * Fungsi untuk tipe polimorf token
      *
-     * @param none
-     * @return EnumType
+     * @return EnumType dari operator
      */
     @Override
     public EnumType GetType(){

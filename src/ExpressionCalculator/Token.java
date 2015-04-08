@@ -10,13 +10,8 @@ package ExpressionCalculator;
  *
  * Kelas abstrak yang digunakan untuk merepresentasikan token
  *
- * @class Token Token.h "Token.h"
- * @package ExpressionCalculator
- * @brief Kelas abstrak yang digunakan untuk merepresentasikan token
  * @author Satria Priambada
  * @version 0.1
- * @date April 2015
- * @warning -
  *
  */
 public abstract class Token {
@@ -32,21 +27,19 @@ public abstract class Token {
      *
      * Fungsi untuk mendapat tipe token
      *
-     * @param none
      * @return EnumType
      */
 
     public abstract EnumType GetType();
 		
     /**
-     * Fungsi Display
+     * Fungsi toString
+     *   Fungsi bantunan untuk mencetak Token
+     *   Berfungsi menmbuat string dari Token
      * 
-     * Fungsi bantunan untuk mencetak Token
-     * Berfungsi menmbuat string dari Token
-     * 
-     * @param none
      * @return string
      */
 		 
-    public abstract String Display();
+    @Override
+    public abstract String toString();
 }
