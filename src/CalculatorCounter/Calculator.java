@@ -26,7 +26,7 @@ import java.util.Scanner;
  * Kelas utama kalkulator yang melakukan loop input-proses-output
  *
  * @author Satria Priambada
- * @version 0.1
+ * @version 1.0
  *
  */
 public class Calculator {
@@ -137,9 +137,6 @@ private final Scanner scanner = new Scanner(System.in);
                                 int hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
-                                if (mode_bilangan == Bilangan.EnumBilangan.romawi)
-                                    hasilB = new BilRomawi(hasil);
-                                else //if (mode_bilangan == Bilangan.EnumBilangan.arab)
                                     hasilB = new BilArab(hasil);
                                 
                                 if (mode_mathLogic == Penghitung.EnumMathLogic.math){
@@ -235,9 +232,7 @@ private final Scanner scanner = new Scanner(System.in);
                                 int hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
-                                if (mode_bilangan == Bilangan.EnumBilangan.romawi)
-                                    hasilB = new BilRomawi(hasil);
-                                else //if (mode_bilangan == Bilangan.EnumBilangan.arab)
+                              
                                     hasilB = new BilArab(hasil);
                                     
                                 if (mode_mathLogic == Penghitung.EnumMathLogic.math){

@@ -97,11 +97,6 @@ public class Tokenizer {
                 int banyak_operator = Operator.KarakterOperator.length;
 
                 boolean ditemukan = false;
-<<<<<<< HEAD
-=======
-
-                //System.out.println(probablyUner);
->>>>>>> origin/CalculatorJavav1.0
                 
                 if (probablyUner)
                 {
@@ -177,14 +172,7 @@ public class Tokenizer {
 
                             //Construct bilangan Arab berdasarkan string tempStr
                             CurToken = new BilArab(tempStr);
-                        } else if (ModeB == Bilangan.EnumBilangan.romawi) {
-                            //Masukkan nilai minus pada string
-                            if (bilMinus){
-                                tempStr = "-" + tempStr;
-                            }
-                            //Construct bilangan Arab berdasarkan string tempStr
-                            CurToken = new BilRomawi(tempStr);
-                        }
+                        } 
                     }
                     //tempStr = "";
                 } catch (BilanganException E){
@@ -199,15 +187,6 @@ public class Tokenizer {
                 }
             }
         }
-<<<<<<< HEAD
-        
-=======
-//        
-//        for (int k=0; k<tempExpression.GetLength(); k++) {
-//            System.out.print(tempExpression.GetToken(k).toString());
-//        }
-//        System.out.println();
->>>>>>> origin/CalculatorJavav1.0
         
         //Keluar loop bila i >= dari PanjangS atau menemukan char '\0'
         return tempExpression;
