@@ -57,5 +57,5 @@ public abstract class Bilangan extends Token{
      *
      * @return double
      */
-    public abstract double GetValue(); //deffered
+    public abstract int GetValue(); //deffered
 }

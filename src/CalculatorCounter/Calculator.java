@@ -115,6 +115,7 @@ private final Scanner scanner = new Scanner(System.in);
 	TokenizerCalculator.SetModeBilangan(Bilangan.EnumBilangan.arab);
 	//Sintaks infix
 	mode_sintaks = Expression.EnumSintaks.infix;
+        mode_mathLogic = Penghitung.EnumMathLogic.math;
 	PenghitungCalculator.SetSintaks(Expression.EnumSintaks.infix);
 
 	String s = scanner.nextLine();
@@ -138,7 +139,7 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                double hasil = PenghitungCalculator.Calculate(e);
+                                int hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
                                 if (mode_bilangan == Bilangan.EnumBilangan.romawi)
@@ -302,7 +303,7 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                double hasil = PenghitungCalculator.Calculate(e);
+                                int hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
                                 if (mode_bilangan == Bilangan.EnumBilangan.romawi)

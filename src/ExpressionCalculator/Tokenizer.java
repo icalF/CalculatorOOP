@@ -98,7 +98,7 @@ public class Tokenizer {
 
                 boolean ditemukan = false;
 
-                System.out.println(probablyUner);
+                //System.out.println(probablyUner);
                 
                 if (probablyUner)
                 {
@@ -196,11 +196,11 @@ public class Tokenizer {
                 }
             }
         }
-        
-        for (int k=0; k<tempExpression.GetLength(); k++) {
-            System.out.print(tempExpression.GetToken(k).toString());
-        }
-        System.out.println();
+//        
+//        for (int k=0; k<tempExpression.GetLength(); k++) {
+//            System.out.print(tempExpression.GetToken(k).toString());
+//        }
+//        System.out.println();
         
         //Keluar loop bila i >= dari PanjangS atau menemukan char '\0'
         return tempExpression;
