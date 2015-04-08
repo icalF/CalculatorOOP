@@ -109,4 +109,12 @@ public Token GetToken(int i){
     public void AddToken(Token T){
         VectorOfToken.add(T);
     }
+    @Override
+    public String toString(){
+        String SE = "";
+        for (int i =0; i < this.GetLength(); i++){
+            SE += this.GetToken(i).toString();
+        }
+        return SE;
+    }
 }

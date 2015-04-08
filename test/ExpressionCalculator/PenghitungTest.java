@@ -42,17 +42,23 @@ public class PenghitungTest {
 
     /**
      * Test of Calculate method, of class Penghitung.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCalculate() throws Exception {
         System.out.println("Calculate");
-        Expression E = null;
+        BilArab B1 = new BilArab("1");
+        Operator O = new Operator("+");
+        Expression E = new Expression();
+        E.AddToken(B1);
+        E.AddToken(O);
+        E.AddToken(B1);
         Penghitung instance = new Penghitung();
-        double expResult = 0.0;
+        double expResult = 2.0;
         double result = instance.Calculate(E);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 2.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -65,54 +71,70 @@ public class PenghitungTest {
         Penghitung instance = new Penghitung();
         instance.SetSintaks(Mode);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of CalculateAtom method, of class Penghitung.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCalculateAtom() throws Exception {
         System.out.println("CalculateAtom");
-        double a = 0.0;
+        double a = 1.0;
         double b = 0.0;
-        Operator o = null;
+        Operator o = new Operator("+");
         Penghitung instance = new Penghitung();
-        double expResult = 0.0;
+        double expResult = 1.0;
         double result = instance.CalculateAtom(a, b, o);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 1.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CalculatePostfix method, of class Penghitung.
+     * Test of CalculatePostfix method, of clas
+     * @throws java.lang.Exception
      */
     @Test
     public void testCalculatePostfix() throws Exception {
         System.out.println("CalculatePostfix");
-        Expression E = null;
+        BilArab B1 = new BilArab("1");
+        Operator O = new Operator("+");
+        Expression E = new Expression();
+        E.AddToken(B1);
+        E.AddToken(B1);
+        E.AddToken(O);
+        
         Penghitung instance = new Penghitung();
-        double expResult = 0.0;
+        double expResult = 2.0;
         double result = instance.CalculatePostfix(E);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 2.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of ConvertPrefix method, of class Penghitung.
      */
     @Test
-    public void testConvertPrefix() {
+    public void testConvertPrefix() throws BilanganException {
         System.out.println("ConvertPrefix");
-        Expression prefix = null;
+        BilArab B1 = new BilArab("1");
+        Operator O = new Operator("+");
+        Expression E = new Expression();        
+        E.AddToken(O);
+        E.AddToken(B1);
+        E.AddToken(B1);
         Penghitung instance = new Penghitung();
-        Expression expResult = null;
-        Expression result = instance.ConvertPrefix(prefix);
-        assertEquals(expResult, result);
+        Expression expResult = new Expression();
+        expResult.AddToken(B1);
+        expResult.AddToken(B1);
+        expResult.AddToken(O);
+        Expression result = instance.ConvertPrefix(E);
+        assertEquals(expResult.toString(), result.toString() );
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -121,13 +143,22 @@ public class PenghitungTest {
     @Test
     public void testConvertInfix() throws Exception {
         System.out.println("ConvertInfix");
-        Expression E = null;
+        BilArab B1 = new BilArab("1");
+        BilArab B2 = new BilArab("2");
+        Operator O = new Operator("+");
+        Expression E = new Expression();
+        E.AddToken(B1);
+        E.AddToken(O);
+        E.AddToken(B2);
         Penghitung instance = new Penghitung();
-        Expression expResult = null;
+        Expression expResult = new Expression();
+        expResult.AddToken(B1);
+        expResult.AddToken(B2);
+        expResult.AddToken(O);
         Expression result = instance.ConvertInfix(E);
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

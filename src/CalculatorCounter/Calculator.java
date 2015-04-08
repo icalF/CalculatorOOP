@@ -16,6 +16,8 @@ import ExpressionCalculator.Expression.EnumSintaks;
 import ExpressionCalculator.Penghitung.EnumMathLogic;
 import ExpressionCalculator.Perintah.EnumPerintah;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
@@ -275,6 +277,67 @@ private final Scanner scanner = new Scanner(System.in);
                 }
                 break;
 	}
+    }
+    
+    Object Run(InputStream in, PrintStream output) throws PenghitungException {
+        Scanner keyboard = new Scanner(in);
+        String s = keyboard.nextLine();
+
+	//while (!s.equals("exit")) {
+            Expression e;
+            if(s.length()>0)
+            {
+                try {
+                    e = TokenizerCalculator.Tokenize(s);
+                    if (e.GetLength() > 0)
+                    {
+                        Token firstToken = e.GetToken(0);
+                        if (firstToken.GetType() == Token.EnumType.cmd) {
+                            try {
+                                    JalankanPerintah(e);
+                            }
+                            catch (CalculatorException E) {
+                                    System.out.println(E.getMessage());
+                            }
+                        }
+                        else {
+                            try {				
+                                double hasil = PenghitungCalculator.Calculate(e);
+                                Bilangan hasilB;// = new Bilangan();
+                                
+                                if (mode_bilangan == Bilangan.EnumBilangan.romawi)
+                                    hasilB = new BilRomawi(hasil);
+                                else //if (mode_bilangan == Bilangan.EnumBilangan.arab)
+                                    hasilB = new BilArab(hasil);
+                                    
+                                if (mode_mathLogic == Penghitung.EnumMathLogic.math){
+                                    System.out.println(hasilB.toString());
+                                    output.println(hasilB.toString());
+                                }else {//mode logic
+                                    if (hasilB.GetValue() == 0){
+                                        System.out.println("false");
+                                    }else{//Hasil bukan 0 dianggap true
+                                        System.out.println("true");
+                                    }
+                                }
+                                
+                                //Lakukan penyimpanan ke memori
+                                EksekutorCalculator.AddExpression(e);
+                            } catch (EmptyStackException E) {
+                                    throw new PenghitungException("Stack kosong");
+                            } catch (PenghitungException E) {
+                                    System.out.println(E.getMessage());
+                            }
+                        }
+                    }
+                } catch (TokenizerException E) {
+                    System.out.println(E.getMessage());
+                }		
+            }
+            s = keyboard.nextLine();
+	//}
+    output.println("proses selesai");  
+    return 1;  
     }
 }
 

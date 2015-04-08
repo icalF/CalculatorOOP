@@ -51,7 +51,7 @@ public class BilanganTest {
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -61,11 +61,11 @@ public class BilanganTest {
     public void testGetType() {
         System.out.println("GetType");
         Bilangan instance = new BilanganImpl();
-        Token.EnumType expResult = null;
+        Token.EnumType expResult = Token.EnumType.bil;
         Token.EnumType result = instance.GetType();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -79,7 +79,7 @@ public class BilanganTest {
         double result = instance.GetValue();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     public class BilanganImpl extends Bilangan {

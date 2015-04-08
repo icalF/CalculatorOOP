@@ -59,11 +59,12 @@ public class BilRomawiTest {
      * Test of toString method, of class Arab.
      */
     @Test
-    public void testtoString() {
+    public void testtoString() throws BilanganException {
         System.out.println("toString");
-        BilRomawi instance = new BilRomawi(10);
-        String expResult = "X";
+        BilRomawi instance = new BilRomawi(12);
+        String expResult = "XII";
         String result = instance.toString();
+        System.out.println(result);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
