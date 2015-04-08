@@ -61,7 +61,7 @@ public class BilArabTest {
     public void testtoString() {
         System.out.println("toString");
         BilArab instance = new BilArab(10);
-        String expResult = "10.0";
+        String expResult = "10";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
