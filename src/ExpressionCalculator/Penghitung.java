@@ -168,7 +168,6 @@ public class Penghitung {
                             while ((!stackEmpty) && (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unknown)){
                                 s.pop();
                                 postfix.AddToken(s.pop());
-                                s.pop();
                                 stackEmpty = s.empty();
                             }
 
