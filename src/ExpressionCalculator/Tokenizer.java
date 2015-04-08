@@ -80,7 +80,7 @@ public class Tokenizer {
                 } catch (Exception E) {}
             }
             
-            probablyUner = (tempChar=='(');
+            probablyUner = (tempChar!=' ') && (i < PanjangS-1);
             
             if ((tempChar == '(' || tempChar == ')') && tempStr.length() == 0){
                 tempStr = "" + tempChar;
@@ -97,6 +97,27 @@ public class Tokenizer {
                 int banyak_operator = Operator.KarakterOperator.length;
 
                 boolean ditemukan = false;
+
+                System.out.println(probablyUner);
+                
+                if (probablyUner)
+                {
+                    String UnaryOperator[] = {"+", "-"};
+                    Operator.EnumOperator EnumUnaryOperator[] = {
+                        Operator.EnumOperator.unerPlus,
+                        Operator.EnumOperator.unerMinus
+                    };
+                    int banyak_unary_operator = UnaryOperator.length;
+
+                    //Cari apakah tempString merupakan operator uner. Bila iya maka construct Perintah
+                    for (int k = 0; (k < banyak_unary_operator) && (!ditemukan); ++k) {
+                        if (tempStr.equals(UnaryOperator[k])) {
+                            CurToken = new Operator(EnumUnaryOperator[k]);
+                            ditemukan = true;
+                        }
+                    }
+                }
+                
                 //Cari apakah tempString merupakan perintah. Bila iya maka construct Perintah
                 for (int k = 0; (k < banyak_perintah) && (!ditemukan); ++k) {
                     if (tempStr.equals(Perintah.KarakterPerintah[k])) {
@@ -175,6 +196,11 @@ public class Tokenizer {
                 }
             }
         }
+        
+        for (int k=0; k<tempExpression.GetLength(); k++) {
+            System.out.print(tempExpression.GetToken(k).toString());
+        }
+        System.out.println();
         
         //Keluar loop bila i >= dari PanjangS atau menemukan char '\0'
         return tempExpression;

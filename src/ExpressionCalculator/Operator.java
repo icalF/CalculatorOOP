@@ -43,7 +43,7 @@ public class Operator extends Token{
     /**
      * Static Data Member
      */
-    public static String KarakterOperator[] = {"+", "-", "/", "*", "div", "mod", "and", "or", "not", "xor", "(", ")", "=", ">=", "<=", ">", "<", "<>", "?", "+", "-"};
+    public static String KarakterOperator[] = {"+", "-", "/", "*", "div", "mod", "and", "or", "not", "xor", "(", ")", "=", ">=", "<=", ">", "<", "<>", "?", "[+]", "[-]"};
     
     private EnumOperator JenisOperator;
     
@@ -81,6 +81,19 @@ public class Operator extends Token{
 		}
 
 	assert(ditemukan);
+    }/*consturctor with parameter string*/
+    
+    /**
+     * Constructor with enum parameter
+     *
+     * Konstruktor yang digunakan untuk membuat Objek operator dari nilai string
+     * yang diberikan
+     *
+     * @param _e enumOperator konstruktor 
+     */
+
+    public Operator(EnumOperator _e){
+        JenisOperator = _e;
     }/*consturctor with parameter string*/
 
     //cctor dan operator= tidak dibutuhkan karena tidak akan dilakukan assignment antar operator

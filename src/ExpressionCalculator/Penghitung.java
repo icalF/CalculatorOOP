@@ -95,14 +95,17 @@ public class Penghitung {
             Token cur = E.GetToken(i);
             if (cur instanceof Operator) {
                 Operator op = (Operator) cur;
-                if (op.GetJenisOperator() == Operator.EnumOperator.Not)
-                {
+                if (op.GetJenisOperator() == Operator.EnumOperator.Not) {
                     if (s.pop() == 0)
                         s.push(1.0);
                     else
                         s.push(0.0);
-                }
-                else {
+                } else if (op.GetJenisOperator() == Operator.EnumOperator.unerMinus) {
+                    double b1 = s.pop();
+                    s.push(-b1);
+                } else if (op.GetJenisOperator() == Operator.EnumOperator.unerPlus) {
+                    // do nothing
+                } else {
                     double b2 = s.pop();
                     double b1 = s.pop();
                     s.push(CalculateAtom(b1, b2, op));
@@ -152,7 +155,9 @@ public class Penghitung {
 
                     if (!s.empty())
                     {
-                        if (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.Not)
+                        if  ((((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.Not) ||
+                            (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unerMinus) ||
+                            (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unerPlus))
                         {
                             postfix.AddToken(s.pop());
                         }
@@ -193,7 +198,9 @@ public class Penghitung {
                     Operator op2 = (Operator) s1.peek();
                     
                     while ((Operator)s1.peek() instanceof Operator &&
-                    (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not))
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not) ||
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.unerMinus) ||
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.unerPlus) )
                     {
                         s2.AddToken(s1.pop());
                     }
@@ -228,7 +235,9 @@ public class Penghitung {
                         Operator op2 = (Operator) s1.peek();
                         
                         while ((Operator)s1.peek() instanceof Operator &&
-                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not))
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.Not) ||
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.unerMinus) ||
+                        (((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.unerPlus) )
                         {
                             s2.AddToken(s1.pop());
                         }

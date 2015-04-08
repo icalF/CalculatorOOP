@@ -61,7 +61,10 @@ public class BilArab extends Bilangan {
         //Jika bukan merupakan - maka ambil char terdepan dan masukkan ke val
         if (s.charAt(0) == '-'){
             bilMinus = true;
-        }else {
+            val = 0;
+        } else if (s.charAt(0) == '+') {
+            val = 0;
+        } else {
             val = (s.charAt(0) - '0');
         }
         
@@ -94,7 +97,7 @@ public class BilArab extends Bilangan {
         //Isi nilai Value dengan double
 	Value = (double)val + ((double)frac/(double)pembagi);
         //Cek apakah bilangan minus atau bukan
-        if (bilMinus){
+        if (bilMinus) {
             Value = -1 * (Value);
         }
     }/* constructor with parameter string */
