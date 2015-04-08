@@ -32,7 +32,7 @@ public class Penghitung {
     }
 
 // operator= tidak diperlukan karena tidak ada assignment
-    public int Calculate(Expression E) throws PenghitungException {
+    public double Calculate(Expression E) throws PenghitungException {
         switch (ModeSintaks) {
             case prefix:
                 E = ConvertPrefix(E);
@@ -54,7 +54,7 @@ public class Penghitung {
         ModeBilangan = ModeL;
     }
 
-    public int CalculateAtom(int a, int b, Operator o) throws PenghitungException {
+    public double CalculateAtom(double a, double b, Operator o) throws PenghitungException {
         if (o.GetJenisOperator() == Operator.EnumOperator.Plus) {
             return a + b;
         } else if (o.GetJenisOperator() == Operator.EnumOperator.Minus) {
@@ -64,15 +64,15 @@ public class Penghitung {
         } else if (o.GetJenisOperator() == Operator.EnumOperator.kali) {
             return a * b;
         } else if (o.GetJenisOperator() == Operator.EnumOperator.Div) {
-            return a / b;
+            return (int)a / (int)b;
         } else if (o.GetJenisOperator() == Operator.EnumOperator.Mod) {
-            return a % b;
+            return (int)a % (int)b;
         } else if (o.GetJenisOperator() == Operator.EnumOperator.And)
-            return a & b;
+            return (int)a & (int)b;
         else if (o.GetJenisOperator() == Operator.EnumOperator.Or) 
-            return a | b;
+            return (int)a | (int)b;
 	else if (o.GetJenisOperator() == Operator.EnumOperator.Xor) 
-            return a ^ b;
+            return (int)a ^ (int)b;
 	else if (o.GetJenisOperator() == Operator.EnumOperator.equal) 
             return (a == b)?1:0;
 	else if (o.GetJenisOperator() == Operator.EnumOperator.ge) 
@@ -89,25 +89,25 @@ public class Penghitung {
             throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
     }
 
-    public int CalculatePostfix(Expression E) throws PenghitungException {
-        Stack <Integer> s = new Stack<>();
+    public double CalculatePostfix(Expression E) throws PenghitungException {
+        Stack<Double> s = new Stack<>();
         for (int i = 0; i < E.GetLength(); ++i) {
             Token cur = E.GetToken(i);
             if (cur instanceof Operator) {
                 Operator op = (Operator) cur;
                 if (op.GetJenisOperator() == Operator.EnumOperator.Not) {
                     if (s.pop() == 0)
-                        s.push(1);
+                        s.push(1.0);
                     else
-                        s.push(0);
+                        s.push(0.0);
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.unerMinus) {
-                    int b1 = s.pop();
+                    double b1 = s.pop();
                     s.push(-b1);
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.unerPlus) {
                     // do nothing
                 } else {
-                    int b2 = s.pop();
-                    int b1 = s.pop();
+                    double b2 = s.pop();
+                    double b1 = s.pop();
                     s.push(CalculateAtom(b1, b2, op));
                 }
             } else {
