@@ -97,8 +97,6 @@ public class Tokenizer {
                 int banyak_operator = Operator.KarakterOperator.length;
 
                 boolean ditemukan = false;
-
-                System.out.println(probablyUner);
                 
                 if (probablyUner)
                 {
@@ -197,10 +195,6 @@ public class Tokenizer {
             }
         }
         
-        for (int k=0; k<tempExpression.GetLength(); k++) {
-            System.out.print(tempExpression.GetToken(k).toString());
-        }
-        System.out.println();
         
         //Keluar loop bila i >= dari PanjangS atau menemukan char '\0'
         return tempExpression;

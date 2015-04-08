@@ -55,38 +55,46 @@ public class Penghitung {
     }
 
     public double CalculateAtom(double a, double b, Operator o) throws PenghitungException {
-        if (o.GetJenisOperator() == Operator.EnumOperator.Plus) {
-            return a + b;
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.Minus) {
-            return a - b;
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.bagi) {
-            return a / b;
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.kali) {
-            return a * b;
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.Div) {
-            return Math.floor(a / b);
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.Mod) {
-            return a - Math.floor(a / b) * b;
-        } else if (o.GetJenisOperator() == Operator.EnumOperator.And)
-            return (int)a & (int)b;
-        else if (o.GetJenisOperator() == Operator.EnumOperator.Or) 
-            return (int)a | (int)b;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.Xor) 
-            return (int)a ^ (int)b;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.equal) 
-            return (a == b)?1.0:0.0;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.ge) 
-            return (a >= b)?1.0:0.0;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.le) 
-            return (a <= b)?1.0:0.0;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.greater) 
-            return (a > b)?1.0:0.0;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.less) 
-            return (a < b)?1.0:0.0;
-	else if (o.GetJenisOperator() == Operator.EnumOperator.nequal) 
-            return (a != b)?1.0:0.0;
-	else
-            throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
+        if (ModeBilangan == EnumMathLogic.math){
+            if (o.GetJenisOperator() == Operator.EnumOperator.Plus) {
+                return a + b;
+            } else if (o.GetJenisOperator() == Operator.EnumOperator.Minus) {
+                return a - b;
+            } else if (o.GetJenisOperator() == Operator.EnumOperator.bagi) {
+                return a / b;
+            } else if (o.GetJenisOperator() == Operator.EnumOperator.kali) {
+                return a * b;
+            } else if (o.GetJenisOperator() == Operator.EnumOperator.Div) {
+                return Math.floor(a / b);
+            } else if (o.GetJenisOperator() == Operator.EnumOperator.Mod) {
+                return a - Math.floor(a / b) * b;
+            }else{
+                throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
+            }
+        } 
+        else  { //ModeBilangan = EnumMathLogic.logic maka hanya bisa operator logic saja
+            if (o.GetJenisOperator() == Operator.EnumOperator.And)
+                return (int)a & (int)b;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.Or) 
+                return (int)a | (int)b;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.Xor) 
+                return (int)a ^ (int)b;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.equal) 
+                return (a == b)?1.0:0.0;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.ge) 
+                return (a >= b)?1.0:0.0;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.le) 
+                return (a <= b)?1.0:0.0;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.greater) 
+                return (a > b)?1.0:0.0;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.less) 
+                return (a < b)?1.0:0.0;
+            else if (o.GetJenisOperator() == Operator.EnumOperator.nequal) 
+                return (a != b)?1.0:0.0;
+            else{
+                throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
+            }
+        }        
     }
 
     public double CalculatePostfix(Expression E) throws PenghitungException {
