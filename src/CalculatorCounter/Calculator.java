@@ -134,7 +134,7 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                int hasil = PenghitungCalculator.Calculate(e);
+                                double hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
                                 if (mode_bilangan == Bilangan.EnumBilangan.romawi)
@@ -232,7 +232,7 @@ private final Scanner scanner = new Scanner(System.in);
                         }
                         else {
                             try {				
-                                int hasil = PenghitungCalculator.Calculate(e);
+                                double hasil = PenghitungCalculator.Calculate(e);
                                 Bilangan hasilB;// = new Bilangan();
                                 
                                 if (mode_bilangan == Bilangan.EnumBilangan.romawi)

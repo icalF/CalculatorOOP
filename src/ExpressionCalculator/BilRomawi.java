@@ -18,7 +18,7 @@ import java.util.Arrays;
  */
 public class BilRomawi extends Bilangan{
 
-    private int Value;
+    private double Value;
     
     /**
      * Konstruktor default
@@ -36,7 +36,7 @@ public class BilRomawi extends Bilangan{
      *
      * @param d bilangan double untuk konstruk angka romawi
      */
-    public BilRomawi(int d) {
+    public BilRomawi(double d) {
         Value = d;
     }
 
@@ -97,7 +97,7 @@ public class BilRomawi extends Bilangan{
      */
     
     @Override
-    public int GetValue() {
+    public double GetValue() {
         return Value;
     }
 

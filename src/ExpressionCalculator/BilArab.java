@@ -14,7 +14,7 @@ package ExpressionCalculator;
 
 public class BilArab extends Bilangan {
     
-    private int Value;
+    private double Value;
 
     /**
      * Constructor default
@@ -36,7 +36,7 @@ public class BilArab extends Bilangan {
      * @param d double
      */
 
-    public BilArab(int d){
+    public BilArab(double d){
         Value = d;
     }
 
@@ -94,7 +94,7 @@ public class BilArab extends Bilangan {
      */
 
     @Override
-    public int GetValue(){
+    public double GetValue(){
         return Value;
     }
 
