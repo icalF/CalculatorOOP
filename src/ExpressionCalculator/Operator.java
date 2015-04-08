@@ -35,13 +35,15 @@ public class Operator extends Token{
         greater,
         less,
         nequal,
-        unknown
+        unknown,
+        unerPlus,
+        unerMinus,
     }
     
     /**
      * Static Data Member
      */
-    public static String KarakterOperator[] = {"+", "-", "/", "*", "div", "mod", "and", "or", "not", "xor", "(", ")", "==", ">=", "<=", ">","<","!=","?"};
+    public static String KarakterOperator[] = {"+", "-", "/", "*", "div", "mod", "and", "or", "not", "xor", "(", ")", "==", ">=", "<=", ">", "<", "!=", "?", "+", "-"};
     
     private EnumOperator JenisOperator;
     

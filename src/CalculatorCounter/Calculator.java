@@ -156,9 +156,7 @@ private final Scanner scanner = new Scanner(System.in);
                                 
                                 //Lakukan penyimpanan ke memori
                                 EksekutorCalculator.AddExpression(e);
-                            } catch (EmptyStackException E) {
-                                    throw new PenghitungException("Stack kosong");
-                            } catch (PenghitungException E) {
+                            } catch (Exception E) {
                                     System.out.println(E.getMessage());
                             }
                         }

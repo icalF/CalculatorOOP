@@ -64,6 +64,9 @@ public class Tokenizer {
         //loop untuk seluruh panjang string
         while (i < PanjangS) {
             tempStr = "";
+            
+            boolean probablyUner = false;
+            
             //Ignore spasi
             while ((tempChar == ' ') && (++i < PanjangS)) {
                 tempChar = s.charAt(i);
@@ -77,6 +80,8 @@ public class Tokenizer {
                     tempChar = s.charAt(i);
                 } catch (Exception E) {}
             }
+            
+            probablyUner = (tempChar=='(');
             
             if ((tempChar == '(' || tempChar == ')') && tempStr.length() == 0){
                 tempStr = "" + tempChar;
@@ -101,8 +106,15 @@ public class Tokenizer {
                     }
                 }
 
-                String SpecialEnum[] = {"math"
-                , "logic", "arab", "romawi", "prefix", "infix", "postfix"};
+                //tempString bukan perintah. Bila operator construct Operator
+                for (int k = 0; (k < banyak_operator) && (!ditemukan); ++k) {
+                    if (tempStr.equals(Operator.KarakterOperator[k]) ) {
+                        CurToken = new Operator(tempStr);
+                        ditemukan = true;
+                    }
+                }
+                
+                String SpecialEnum[] = {"math", "logic", "arab", "romawi", "prefix", "infix", "postfix"};
                 int banyak_special_enum = SpecialEnum.length;
 
                 for (int k = 0; (k < banyak_special_enum) && (!ditemukan); ++k) {
@@ -112,7 +124,7 @@ public class Tokenizer {
                     }
                 }
 
-                String SpecialEnumTF[] = {"false","true"};
+                String SpecialEnumTF[] = {"false", "true"};
                 int banyak_TF = SpecialEnumTF.length;
 
                 for (int k = 0; (k < banyak_TF) && (!ditemukan); ++k) {
@@ -121,7 +133,6 @@ public class Tokenizer {
                         ditemukan = true;
                     }
                 }
-
 
                 //tempString bukan perintah. Bila operator construct Operator
                 for (int k = 0; (k < banyak_operator) && (!ditemukan); ++k) {

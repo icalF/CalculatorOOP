@@ -94,10 +94,19 @@ public class Penghitung {
         for (int i = 0; i < E.GetLength(); ++i) {
             Token cur = E.GetToken(i);
             if (cur instanceof Operator) {
-                double b2 = s.pop();
-                double b1 = s.pop();
                 Operator op = (Operator) cur;
-                s.push(CalculateAtom(b1, b2, op));
+                if (op.GetJenisOperator() == Operator.EnumOperator.Not)
+                {
+                    if (s.pop() == 0)
+                        s.push(1.0);
+                    else
+                        s.push(0.0);
+                }
+                else {
+                    double b2 = s.pop();
+                    double b1 = s.pop();
+                    s.push(CalculateAtom(b1, b2, op));
+                }
             } else {
                 if (!(cur instanceof Bilangan)) {
                     throw new PenghitungException("Terdapat kesalahan pada sintaks.");
@@ -131,21 +140,41 @@ public class Penghitung {
         Stack<Token> s = new Stack<>();
         int n = prefix.GetLength();
 
-        for (int i = 0; i < n; i++) {
-            Token cur = prefix.GetToken(i);
-            if (cur instanceof Operator) {
-                s.push(cur);
-            } else {
-                postfix.AddToken(cur);
-                
-                while ((!s.empty()) && (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unknown)){
-                    s.pop();
-                    postfix.AddToken(s.pop());
-                    s.pop();
+        try
+        {
+               
+            for (int i = 0; i < n; i++) {
+                Token cur = prefix.GetToken(i);
+                if (cur instanceof Operator) {
+                    s.push(cur);
+                } else {
+                    postfix.AddToken(cur);
+
+                    if (!s.empty())
+                    {
+                        if (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.Not)
+                        {
+                            postfix.AddToken(s.pop());
+                        }
+                        else
+                        {
+                            boolean stackEmpty = false;
+
+                            while ((!stackEmpty) && (((Operator)s.peek()).GetJenisOperator() == Operator.EnumOperator.unknown)){
+                                s.pop();
+                                postfix.AddToken(s.pop());
+                                s.pop();
+                                stackEmpty = s.empty();
+                            }
+
+                            s.push(new Operator());
+                        }
+                    }
+
                 }
-                
-                s.push(new Operator());
             }
+        } catch (Exception E) {
+            System.out.println(E.getMessage());
         }
         return postfix;
     }
@@ -158,31 +187,47 @@ public class Penghitung {
             Token cur = E.GetToken(i);
             if (cur instanceof Bilangan) {
                 s2.AddToken(cur);
+
+                try {
+                    Operator op2 = (Operator) s1.peek();
+                    
+                    while ((Operator)s1.peek() instanceof Operator &&
+                    (op2.GetJenisOperator() == Operator.EnumOperator.Not))
+                    {
+                        s2.AddToken(op2);
+                        s1.pop();
+                    }
+                    
+                } catch (EmptyStackException e) {}      // do nothing
+
             } else {
                 Operator op = (Operator)cur;
-		if (op.GetJenisOperator() == Operator.EnumOperator.kurungBuka) {
+		        if (op.GetJenisOperator() == Operator.EnumOperator.kurungBuka) {
+
                     s1.push(cur);
+
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.kurungTutup) {
+                    
                     while (((Operator)s1.peek()).GetJenisOperator() != Operator.EnumOperator.kurungBuka) {
                         s2.AddToken(s1.pop());
                     }
-                    s1.pop();	// pop kurungBuka
-                } else if (op.GetJenisOperator() == Operator.EnumOperator.Not) {		// Not x = x - 2x + 1
-                    i++;
-                    if (i == E.GetLength()) {
-                        throw new PenghitungException("expression incomplete");
-                    }
-                    cur = E.GetToken(i);
-                    s2.AddToken(cur);
-                    Bilangan curBilangan = (Bilangan)cur;
-                    cur = new BilArab(2*curBilangan.GetValue());
-                    s2.AddToken(cur);
-                    cur = new Operator("-");
-                    s2.AddToken(cur);
-                    cur = new BilArab(1);
-                    s2.AddToken(cur);
-                    cur = new Operator("+");
-                    s2.AddToken(cur);
+                    
+                    s1.pop();
+
+                    try {
+                        Operator op2 = (Operator) s1.peek();
+                        
+                        while ((Operator)s1.peek() instanceof Operator &&
+                        (op2.GetJenisOperator() == Operator.EnumOperator.Not))
+                        {
+                            s2.AddToken(op2);
+                            s1.pop();
+                        }
+
+                    } catch (EmptyStackException e) {}      // do nothing
+
+                } else if (op.GetJenisOperator() == Operator.EnumOperator.Not) {
+                    s1.push(cur);
                 } else {
                     if (op.GetJenisOperator() == Operator.EnumOperator.kali || op.GetJenisOperator() == Operator.EnumOperator.bagi) {
                         s1.push(cur);
