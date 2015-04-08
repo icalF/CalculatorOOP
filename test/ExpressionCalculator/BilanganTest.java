@@ -88,8 +88,8 @@ public class BilanganTest {
             return "";
         }
 
-        public double GetValue() {
-            return 0.0;
+        public int GetValue() {
+            return 0;
         }
     }
     

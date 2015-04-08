@@ -32,7 +32,7 @@ public class Penghitung {
     }
 
 // operator= tidak diperlukan karena tidak ada assignment
-    public double Calculate(Expression E) throws PenghitungException {
+    public int Calculate(Expression E) throws PenghitungException {
         switch (ModeSintaks) {
             case prefix:
                 E = ConvertPrefix(E);
@@ -54,6 +54,7 @@ public class Penghitung {
         ModeBilangan = ModeL;
     }
 
+<<<<<<< HEAD
     public double CalculateAtom(double a, double b, Operator o) throws PenghitungException {
         if (ModeBilangan == EnumMathLogic.math){
             if (o.GetJenisOperator() == Operator.EnumOperator.Plus) {
@@ -95,27 +96,62 @@ public class Penghitung {
                 throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
             }
         }        
+=======
+    public int CalculateAtom(int a, int b, Operator o) throws PenghitungException {
+        if (o.GetJenisOperator() == Operator.EnumOperator.Plus) {
+            return a + b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.Minus) {
+            return a - b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.bagi) {
+            return a / b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.kali) {
+            return a * b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.Div) {
+            return a / b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.Mod) {
+            return a % b;
+        } else if (o.GetJenisOperator() == Operator.EnumOperator.And)
+            return a & b;
+        else if (o.GetJenisOperator() == Operator.EnumOperator.Or) 
+            return a | b;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.Xor) 
+            return a ^ b;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.equal) 
+            return (a == b)?1:0;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.ge) 
+            return (a >= b)?1:0;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.le) 
+            return (a <= b)?1:0;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.greater) 
+            return (a > b)?1:0;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.less) 
+            return (a < b)?1:0;
+	else if (o.GetJenisOperator() == Operator.EnumOperator.nequal) 
+            return (a != b)?1:0;
+	else
+            throw new PenghitungException("Terdapat kesalahan pada ekspresi.");
+>>>>>>> origin/CalculatorJavav1.0
     }
 
-    public double CalculatePostfix(Expression E) throws PenghitungException {
-        Stack <Double> s = new Stack<>();
+    public int CalculatePostfix(Expression E) throws PenghitungException {
+        Stack <Integer> s = new Stack<>();
         for (int i = 0; i < E.GetLength(); ++i) {
             Token cur = E.GetToken(i);
             if (cur instanceof Operator) {
                 Operator op = (Operator) cur;
                 if (op.GetJenisOperator() == Operator.EnumOperator.Not) {
                     if (s.pop() == 0)
-                        s.push(1.0);
+                        s.push(1);
                     else
-                        s.push(0.0);
+                        s.push(0);
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.unerMinus) {
-                    double b1 = s.pop();
+                    int b1 = s.pop();
                     s.push(-b1);
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.unerPlus) {
                     // do nothing
                 } else {
-                    double b2 = s.pop();
-                    double b1 = s.pop();
+                    int b2 = s.pop();
+                    int b1 = s.pop();
                     s.push(CalculateAtom(b1, b2, op));
                 }
             } else {
@@ -198,7 +234,6 @@ public class Penghitung {
         
         for (int i = 0; i < E.GetLength(); ++i) {
             Token cur = E.GetToken(i);
-            //System.out.print(E.GetToken(i).toString());
             if (cur instanceof Bilangan) {
                 s2.AddToken(cur);
 
@@ -223,21 +258,14 @@ public class Penghitung {
                 } else if (op.GetJenisOperator() == Operator.EnumOperator.kurungTutup) {
                     
                     Boolean endKurung = false;
-                    
-                    //System.out.print(">>>>>>>>>[" + s1.size() + "]");
 
                     while (!endKurung) {
-                        //System.out.print(s1.peek().toString());
                         if (((Operator)s1.peek()).GetJenisOperator() != Operator.EnumOperator.kurungBuka)
                             s2.AddToken(s1.pop());
                         endKurung = ((Operator)s1.peek()).GetJenisOperator() == Operator.EnumOperator.kurungBuka;
                     }
-                    
-                    //System.out.print("<<<<<<<<<");
 
                     s1.pop();
-                    
-                    //System.out.print("pop");
 
                     try {
                         Operator op2 = (Operator) s1.peek();
@@ -270,20 +298,11 @@ public class Penghitung {
                     }
                 }
             }
-            //System.out.print("x[" + s1.size() + "]");
         }
-
-        //System.out.println("a");
         
         while (!s1.empty()) {
             s2.AddToken(s1.pop());
         }
-                
-        //System.out.print("b");
-        //for (int i=0; i<s2.GetLength(); i++)
-        //{
-        //    System.out.print(s2.GetToken(i).toString());
-        //}
         
         return s2;        
     }

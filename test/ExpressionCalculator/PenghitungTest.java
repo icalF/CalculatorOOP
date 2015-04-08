@@ -54,9 +54,9 @@ public class PenghitungTest {
         E.AddToken(O);
         E.AddToken(B1);
         Penghitung instance = new Penghitung();
-        double expResult = 2.0;
-        double result = instance.Calculate(E);
-        assertEquals(expResult, result, 2.0);
+        int expResult = 2;
+        int result = instance.Calculate(E);
+        assertEquals(expResult, result, 2);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -81,13 +81,13 @@ public class PenghitungTest {
     @Test
     public void testCalculateAtom() throws Exception {
         System.out.println("CalculateAtom");
-        double a = 1.0;
-        double b = 0.0;
+        int a = 1;
+        int b = 0;
         Operator o = new Operator("+");
         Penghitung instance = new Penghitung();
-        double expResult = 1.0;
-        double result = instance.CalculateAtom(a, b, o);
-        assertEquals(expResult, result, 1.0);
+        int expResult = 1;
+        int result = instance.CalculateAtom(a, b, o);
+        assertEquals(expResult, result, 1);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -107,9 +107,9 @@ public class PenghitungTest {
         E.AddToken(O);
         
         Penghitung instance = new Penghitung();
-        double expResult = 2.0;
-        double result = instance.CalculatePostfix(E);
-        assertEquals(expResult, result, 2.0);
+        int expResult = 2;
+        int result = instance.CalculatePostfix(E);
+        assertEquals(expResult, result, 2);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }

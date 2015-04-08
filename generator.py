@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import random
+import sys
 
 arith = ['+', '-', '/', '*', '//', '%']
 logic = ['or', 'and', '^']
@@ -22,7 +23,7 @@ def generate(mode, depth):
 		if mode == 0 :
 			print 'not',
 		else :
-			print '-',
+			sys.stdout.write('-')
 		generate(mode, depth - 1)
 	else :							# binary operation
 		if mode == 1 :
@@ -50,10 +51,12 @@ def generate(mode, depth):
 
 if __name__ == '__main__':
 	random.seed()
-	n = random.randrange(10 ** 3)
+	n = 1000
+	while n > 500 :
+		generate(1, 4)
+		n -= 1
+		print
 	while n > 0 :
-		random.seed()
-		mode = random.randint(0, 1)
-		generate(mode, 4)
+		generate(0, 4)
 		n -= 1
 		print

@@ -14,7 +14,7 @@ package ExpressionCalculator;
 
 public class BilArab extends Bilangan {
     
-    private double Value;
+    private int Value;
 
     /**
      * Constructor default
@@ -36,7 +36,7 @@ public class BilArab extends Bilangan {
      * @param d double
      */
 
-    public BilArab(double d){
+    public BilArab(int d){
         Value = d;
     }
 
@@ -51,7 +51,6 @@ public class BilArab extends Bilangan {
      */
     public BilArab(String s) throws BilanganException{
         int val = 0;
-	int frac = 0;
         int digitDiBelakangKoma = 0;
         boolean bilMinus = false;
 	int len = s.length();
@@ -69,33 +68,15 @@ public class BilArab extends Bilangan {
         }
         
         //untuk karakter kedua dan selanjutnya
-	for (i = 1; (i < len) && (s.charAt(i) != '.'); ++i)
+	for (i = 1; (i < len); ++i)
 	{
             if (s.charAt(i) >= '0' && s.charAt(i) <= '9')
                     val = val*10 + (s.charAt(i) - '0');
             else
                     throw new BilanganException("Bilangan tidak dikenali.");
 	}
-        //Jika berhenti pada karakter . dan masih dapat diakses
-        if ( (i < len) && s.charAt(i) == '.'){
-            
-            for (int j = i+1; j < len; j++)
-            {
-                digitDiBelakangKoma++; 
-                if (s.charAt(j) >= '0' && s.charAt(j) <= '9')
-                    frac = frac*10 + (s.charAt(j) - '0');
-                else
-                    throw new BilanganException("Bilangan tidak dikenali.");
-            }
-        }
-
-	int pembagi = 1;
-
-	for (i = 0; i < digitDiBelakangKoma ; ++i)
-		pembagi = pembagi*10;
-
-        //Isi nilai Value dengan double
-	Value = (double)val + ((double)frac/(double)pembagi);
+        
+        Value = val;
         //Cek apakah bilangan minus atau bukan
         if (bilMinus) {
             Value = -1 * (Value);
@@ -113,7 +94,7 @@ public class BilArab extends Bilangan {
      */
 
     @Override
-    public double GetValue(){
+    public int GetValue(){
         return Value;
     }
 
