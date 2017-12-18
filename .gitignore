@@ -1,43 +1,20 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
 
-# Folder config file
-Desktop.ini
+# Created by https://www.gitignore.io/api/gradle
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+### Gradle ###
+.gradle
+**/build/
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Ignore Gradle GUI config
+gradle-app.setting
 
-# Windows shortcuts
-*.lnk
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
-# =========================
-# Operating System Files
-# =========================
+# Cache of project
+.gradletasknamecache
 
-# OSX
-# =========================
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
 
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# End of https://www.gitignore.io/api/gradle
